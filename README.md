@@ -21,87 +21,94 @@ Make sure to install the following Python libraries:
 
 ```bash
 pip install pandas folium geopy
-'''
-📁 File Inputs
-copyyyy.csv — VTS (vehicle tracking system) data with columns like latitude, longitude, vehicle_number, trip_id, etc.
+```
+## 📁 Input Files
 
-report_truck_bus_output_output.csv — Toll plaza data with columns like Latitude, Longitude, Toll Plaza Name, and Single Journey toll cost.
+- `copyyyy.csv`  
+  Contains VTS (Vehicle Tracking System) data with fields like:
+  - `latitude`
+  - `longitude`
+  - `vehicle_number`
+  - `trip_id`
+  - `name` (optional)
 
----
-
-📁 File Inputs
-copyyyy.csv — VTS (vehicle tracking system) data with columns like latitude, longitude, vehicle_number, trip_id, etc.
-
-report_truck_bus_output_output.csv — Toll plaza data with columns like Latitude, Longitude, Toll Plaza Name, and Single Journey toll cost.
-
-🧠 Key Features
-Accurate distance-based toll plaza crossing detection using geopy.distance.great_circle
-
-Real-time toll cost calculation per vehicle
-
-Interactive Folium map showing:
-
-Red markers for toll plazas
-
-Green markers for tolls that have been crossed
-
-Blue path representing the vehicle route
-
-Output CSV summary including:
-
-Trip ID
-
-Vehicle number
-
-Company name
-
-Number of tolls crossed
-
-Toll cost breakdown
-
-Total toll cost
+- `report_truck_bus_output_output.csv`  
+  Contains toll plaza data with:
+  - `Latitude`
+  - `Longitude`
+  - `Toll Plaza Name`
+  - `Single Journey` (toll cost)
 
 ---
 
-📤 Outputs
-trip_summary1.csv — A CSV summary with toll cost and crossing details.
+## 🧠 Key Features
 
-toll_plaza_map.html — An interactive map visualization.
+- Accurate toll plaza crossing detection using **geopy's great-circle distance**
+- Dynamic toll cost calculation
+- **Interactive Folium map**:
+  - Red markers for all toll plazas
+  - Green markers for tolls that were crossed
+  - Blue circles for vehicle path points
+- Outputs summary with:
+  - Trip ID
+  - Vehicle Number
+  - Company Name
+  - Number of Toll Plazas Crossed
+  - Individual Toll Costs
+  - Total Toll Cost
 
 ---
 
-📌 Example Output
-yaml
-Copy
-Edit
+## 📤 Output Files
+
+- `trip_summary1.csv` – CSV file summarizing the toll data for the trip
+- `toll_plaza_map.html` – Interactive map showing route and toll locations
+
+---
+
+## 📌 Example Output (Console)
 Vehicle TN01AB1234 has crossed Toll Plaza XYZ Toll
 Total Trip Cost: ₹320.0
 
 ---
 
-🛠 How to Use
-Update the file paths in the script to match your local system:
+## 🛠 How to Use
 
-copyyyy.csv
+1. Update the file paths in the script to your local system:
 
-report_truck_bus_output_output.csv
+   ```python
+   vts_df = pd.read_csv(r'C:\path\to\copyyyy.csv')
+   report_df = pd.read_csv(r'C:\path\to\report_truck_bus_output_output.csv')
 
-Run the script in a Python environment.
+2. Run the script in a Python environment.
 
-View:
+3. Review the outputs:
 
-Console outputs for toll crossings.
+Console will show tolls crossed.
 
-trip_summary1.csv for cost summary.
+Check trip_summary1.csv for cost summary.
 
-toll_plaza_map.html in your browser for route and toll visualization.
+Open toll_plaza_map.html in a browser for visualization.
+
+📍 Notes
+You can modify the crossing detection threshold (default is 1.0 km) in this condition:
+
+if distance < 1.0
+to adjust the sensitivity of toll detection.
 
 ---
 
-## Sample Outputs
+## Sample Outputs:
+
 
 ![Alt Text](https://github.com/VinothaRamkumar27/Geospatial-Toll-Crossing-And-Charge-Calculation-For-Trucks/blob/0f88a01781ff39f0e72afed2c8066f5c6978a797/Geospatial%20Toll%20Crossing%20And%20Charge%20Calculation%20For%20Trucks/Sample%20Outputs/Sample%20Trip.png)
 
 ![Alt Text](https://github.com/VinothaRamkumar27/Geospatial-Toll-Crossing-And-Charge-Calculation-For-Trucks/blob/0f88a01781ff39f0e72afed2c8066f5c6978a797/Geospatial%20Toll%20Crossing%20And%20Charge%20Calculation%20For%20Trucks/Sample%20Outputs/Visualization%20of%20Toll%20plaza%20locations%20in%20Tamilnadu.png)
 
 ---
+
+
+
+
+
+
